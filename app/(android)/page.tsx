@@ -1,22 +1,34 @@
 "use client";
 
 import LargeButton from "@/components/large-button";
+import { toast } from "sonner";
 
 const AndroidPage = () => {
   const onClickClose = () => {
-    window.android.close();
+    
+    try {
+      window.android.close();
+      toast.success("Success")
+    } catch {
+      toast.error("Something went to wrong.")
+    }
   }
 
   const onClickKinesisLog = () => {
-    const jsonData = JSON.stringify({
-      "name": "smaple",
-      "webview": {
-        "project": "test",
-        "name": "payment test"
-      }
-    });
-
-    window.android.kinesisLog(jsonData);
+    try {
+      const jsonData = JSON.stringify({
+        "name": "smaple",
+        "webview": {
+          "project": "test",
+          "name": "payment test"
+        }
+      });
+  
+      window.android.kinesisLog(jsonData);
+      toast.success("Success")
+    } catch {
+      toast.error("Something went to wrong.")
+    }
   }
 
   return (
